@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+    api:
+        build:
+            context: ./
+            dockerfile: ./docker/api-dev/Dockerfile
+        volumes:
+            - ./services/api:/usr/template-2/services/api
+        ports:
+            - 1001:1001
+        env_file:
+            - ./services/api/.env
+        container_name: api

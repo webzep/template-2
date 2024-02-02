@@ -1,0 +1,45 @@
+{
+	"name": "app",
+	"version": "0.0.1",
+	"description": "",
+	"scripts": {
+		"build": "vite build",
+		"start": "vite",
+		"start:turbo": "yarn start",
+		"ts-prune": "npx ts-prune"
+	},
+	"browserslist": "> 0.5%, last 2 versions",
+	"dependencies": {
+		"@reduxjs/toolkit": "2.1.0",
+		"colors": "*",
+		"common": "*",
+		"dotenv": "16.4.1",
+		"envalid": "8.0.0",
+		"firebase": "10.8.0",
+		"firebaseui": "6.1.0",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-helmet": "6.1.0",
+		"react-redux": "9.1.0",
+		"react-router": "6.22.0",
+		"react-router-dom": "6.22.0",
+		"ui": "*"
+	},
+	"devDependencies": {
+		"@emotion/react": "11.11.3",
+		"@emotion/styled": "11.11.0",
+		"@types/react": "18.2.51",
+		"@types/react-dom": "18.2.18",
+		"@types/react-helmet": "6.1.11",
+		"@types/react-router": "5.1.20",
+		"@types/react-router-dom": "5.3.3",
+		"@vitejs/plugin-react": "4.2.1",
+		"@vitest/coverage-c8": "0.33.0",
+		"@vitest/ui": "1.2.2",
+		"ts-prune": "0.10.3",
+		"typescript": "5.3.3",
+		"vite": "5.0.12",
+		"vite-plugin-svgr": "4.2.0",
+		"vite-tsconfig-paths": "4.3.1"
+	}
+}

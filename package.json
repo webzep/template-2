@@ -1,0 +1,63 @@
+{
+	"name": "template-2",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*",
+		"services/*"
+	],
+	"scripts": {
+		"api": "yarn workspace api",
+		"app": "yarn workspace app",
+		"ci": "yarn --frozen-lockfile --ignore-scripts",
+		"color": "yarn workspace color",
+		"commit": "npx cz",
+		"common": "yarn workspace common",
+		"deduplicate": "yarn yarn-deduplicate -s fewer",
+		"postinstall": "yarn deduplicate && yarn lint:sortpackages",
+		"lint": "concurrently \"yarn lint:eslint\" \"yarn lint:prettier\" \"yarn lint:sortpackages\"",
+		"lint:eslint": "eslint --config .eslintrc --fix '{*,**/*}.{js,jsx,ts,tsx}'",
+		"lint:prettier": "prettier --write '{*,**/*}.{css,html,json,md,yml,yaml}'",
+		"lint:sortpackages": "sort-package-json package.json **/*/package.json",
+		"prepare": "husky install",
+		"prestart": "yarn global add turbo",
+		"start": "concurrently --names 'docker,turbo' -c 'blue.bold,magenta.bold' 'yarn start:docker' 'yarn start:turbo'",
+		"start:build": "concurrently --names 'docker,turbo' -c 'blue.bold,magenta.bold' 'docker compose up --build' 'yarn start:turbo'",
+		"start:docker": "docker compose up",
+		"start:docker:build": "docker compose up --build",
+		"start:turbo": "turbo run start:turbo",
+		"stop": "docker compose down",
+		"ui": "yarn workspace ui"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-customizable"
+		},
+		"cz-customizable": {
+			"config": "./cz.config.js"
+		}
+	},
+	"devDependencies": {
+		"@types/node": "18.11.18",
+		"@typescript-eslint/eslint-plugin": "5.48.2",
+		"@typescript-eslint/parser": "5.48.2",
+		"commitizen": "4.2.6",
+		"concurrently": "7.6.0",
+		"cz-customizable": "7.0.0",
+		"eslint": "8.32.0",
+		"eslint-config-prettier": "8.6.0",
+		"eslint-import-resolver-typescript": "3.5.3",
+		"eslint-plugin-import": "2.27.5",
+		"eslint-plugin-prettier": "4.2.1",
+		"eslint-plugin-react": "7.31.10",
+		"eslint-plugin-simple-import-sort": "9.0.0",
+		"husky": "8.0.3",
+		"lint-staged": "13.1.0",
+		"prettier": "2.8.3",
+		"sort-package-json": "2.1.0",
+		"ttypescript": "1.5.15",
+		"turbo": "1.7.0",
+		"yarn-deduplicate": "6.0.1"
+	},
+	"packageManager": "yarn@1.22.19"
+}
